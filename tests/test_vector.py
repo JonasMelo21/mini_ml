@@ -8,6 +8,12 @@ def test_vector_addition():
     # O assert verifica se a expressão é True. Se não for, ele grita erro.
     assert result.components == [4, 6]
 
+def test_vector_subtraction():
+    v1 = Vector([1,2,3])
+    v2 = Vector([4,5,6])
+    result = v1 - v2 
+    assert result.components == [-3,-3,-3]
+
 def test_dot_product():
     v1 = Vector([1, 2])
     v2 = Vector([3, 4])
@@ -24,3 +30,12 @@ def test_magnitude_float():
     # Raiz de 2 é aprox 1.414...
     # Para comparar floats, usamos math.isclose pq computador erra decimal
     assert math.isclose(v.magnitude(), 1.41421356, rel_tol=1e-5)
+
+def test_distance():
+    v1 = Vector([1, 1])
+    v2 = Vector([4, 5])
+    
+    # A diferença é (4-1, 5-1) = (3, 4)
+    # A magnitude de (3, 4) é 5.
+    dist = v1.euclidian_distance(v2)
+    assert dist == 5.0

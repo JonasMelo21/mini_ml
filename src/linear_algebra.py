@@ -90,3 +90,18 @@ class Vector:
         :rtype: float
         """
         return sqrt(self.sum_of_squares())
+    
+    def euclidian_distance(self,other:'Vector') -> float:
+        """
+        Calcula a distância euclidiana entre dois vetores
+        
+        :param self: Vetor que chamou a função
+        :param other: Outro vetor
+        :type other: 'Vector'
+        :return: Distância euclidiana entre self e other
+        :rtype: float
+        """
+
+        diff_vector = self - other
+
+        return diff_vector.magnitude()
