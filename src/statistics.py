@@ -110,3 +110,6 @@ def correlation(sampleA:List,sampleB:List) -> float:
     Returns:
         float: The computed correlation (between -1 and 1).
     """
+    if std_deviation(sampleA) * std_deviation(sampleB) == 0:    # if one of the samples has 0 standard deviation, the correlation is 0
+        return 0.0
+    return covariance(sampleA,sampleB) / (std_deviation(sampleA) * std_deviation(sampleB))

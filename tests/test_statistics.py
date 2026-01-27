@@ -1,4 +1,4 @@
-from src.statistics import mean, median, variance, std_deviation,covariance
+from src.statistics import mean, median, variance, std_deviation,covariance,correlation
 from math import isclose 
 import pytest
 
@@ -35,3 +35,21 @@ def test_covariance():
     # Dot: (-1*-1) + (0*0) + (1*1) = 1 + 0 + 1 = 2
     # Cov: 2 / (3-1) = 1.0
     assert covariance(xs, ys) == 1.0
+
+def test_correlation_perfect():
+    xs = [1, 2, 3]
+    ys = [2, 4, 6] # Y é exatamente 2*X
+    # Devem ter correlação perfeita 1.0
+    assert correlation(xs, ys) == 1.0
+
+def test_correlation_inverse():
+    xs = [1, 2, 3]
+    ys = [3, 2, 1] # Y diminui quando X aumenta
+    assert correlation(xs, ys) == -1.0
+
+def test_correlation_zero():
+    # Sem relação clara
+    xs = [1, 2, 3]
+    ys = [10, 10, 10] # Y não muda nada
+    # Desvio padrão de Y é 0. Divisão por zero deve ser tratada.
+    assert correlation(xs, ys) == 0.0

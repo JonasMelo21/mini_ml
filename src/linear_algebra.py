@@ -12,13 +12,16 @@ class Vector:
     
     def __add__(self, other: 'Vector') -> 'Vector':
         """
-        Soma dois vetores.
+        Adds two vectors.
 
         Args:
-            other (Vector): Outro vetor a ser somado.
+            other (Vector): Another vector to add.
 
         Returns:
-            Vector: Um novo vetor, resultado da soma dos dois vetores.
+            Vector: A new vector, result of the sum.
+
+        Raises:
+            ValueError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
             raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
@@ -28,13 +31,16 @@ class Vector:
     
     def __sub__(self,other:'Vector') -> 'Vector':
         """
-        Subtrai um vetor de outro.
+        Subtracts one vector from another.
 
         Args:
-            other (Vector): O vetor que será subtraído.
+            other (Vector): The vector to subtract.
 
         Returns:
-            Vector: Um novo vetor, resultado da subtração.
+            Vector: A new vector, result of the subtraction.
+
+        Raises:
+            ValueError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
             raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
@@ -44,26 +50,29 @@ class Vector:
     
     def __mul__(self,scalar:Scalar)->'Vector':
         """
-        Multiplica o vetor por um escalar.
+        Multiplies the vector by a scalar.
 
         Args:
-            scalar (Scalar): Um número (float ou int) para multiplicar cada elemento do vetor.
+            scalar (Scalar): A number (float or int) to multiply each element of the vector.
 
         Returns:
-            Vector: Um novo vetor, resultado do produto entre o escalar e o vetor.
+            Vector: A new vector, result of the scalar multiplication.
         """
         result = [scalar * x for x in self.components]
         return Vector(result)
     
     def dot_product(self,other:'Vector') -> Scalar:
         """
-        Calcula o produto escalar entre dois vetores
+        Calculates the dot product between two vectors.
 
         Args:
-            other (Vector): o outro vetor para multiplicar
+            other (Vector): The other vector to multiply.
 
         Returns:
-            Scalar: Um número, resultado do produto escalar (float ou int)
+            Scalar: The result of the dot product (float or int).
+
+        Raises:
+            ValueError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
             raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
@@ -73,31 +82,31 @@ class Vector:
     
     def sum_of_squares(self)->Scalar:
         """
-        Calcula a soma dos quadrados dos elementos do vetor.
+        Calculates the sum of the squares of the vector elements.
 
         Returns:
-            Scalar: O valor do produto escalar do vetor por ele mesmo.
+            Scalar: The dot product of the vector with itself.
         """
         return self.dot_product(self)
     
     def magnitude(self) -> float:
         """
-        Calcula o comprimento/módulo/intensidade/magnitude de um vetor.
+        Calculates the magnitude (length) of the vector.
 
         Returns:
-            float: O comprimento (magnitude) do vetor.
+            float: The magnitude of the vector.
         """
         return sqrt(self.sum_of_squares())
     
     def euclidian_distance(self,other:'Vector') -> float:
         """
-        Calcula a distância euclidiana entre dois vetores.
+        Calculates the Euclidean distance between two vectors.
 
         Args:
-            other (Vector): Outro vetor para calcular a distância.
+            other (Vector): Another vector to calculate the distance to.
 
         Returns:
-            float: Distância euclidiana entre self e other.
+            float: The Euclidean distance between self and other.
         """
         diff_vector = self - other
         return diff_vector.magnitude()
