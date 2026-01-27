@@ -12,13 +12,13 @@ class Vector:
     
     def __add__(self, other: 'Vector') -> 'Vector':
         """
-        Docstring for __add__
-        
-        :param self: Objeto instanciado que chama o metodo
-        :param other: Outro vetor a ser somado
-        :type other: 'Vector'
-        :return: Retorna a soma dos dois vetores
-        :rtype: Vector
+        Soma dois vetores.
+
+        Args:
+            other (Vector): Outro vetor a ser somado.
+
+        Returns:
+            Vector: Um novo vetor, resultado da soma dos dois vetores.
         """
         if len(self.components) != len(other.components):
             raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
@@ -28,13 +28,13 @@ class Vector:
     
     def __sub__(self,other:'Vector') -> 'Vector':
         """
-        Docstring for __sub__
-        
-        :param self: O vetor passado como objeto
-        :param other: O vetor que será subtraído
-        :type other: 'Vector'
-        :return: Retorna o resultado da subtração entre o vetor self pelo other
-        :rtype: Vector
+        Subtrai um vetor de outro.
+
+        Args:
+            other (Vector): O vetor que será subtraído.
+
+        Returns:
+            Vector: Um novo vetor, resultado da subtração.
         """
         if len(self.components) != len(other.components):
             raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
@@ -44,13 +44,13 @@ class Vector:
     
     def __mul__(self,scalar:Scalar)->'Vector':
         """
-        Docstring for __mul__
-        
-        :param self: O objeto que chama a função
-        :param scalar: Um número (float ou int)
-        :type scalar: Scalar (float ou int)
-        :return: Retorna um novo vetor, que cada elemento é o resultado do produto entre o escalar e os elementos do vetor passado
-        :rtype: Vector
+        Multiplica o vetor por um escalar.
+
+        Args:
+            scalar (Scalar): Um número (float ou int) para multiplicar cada elemento do vetor.
+
+        Returns:
+            Vector: Um novo vetor, resultado do produto entre o escalar e o vetor.
         """
         result = [scalar * x for x in self.components]
         return Vector(result)
@@ -73,35 +73,31 @@ class Vector:
     
     def sum_of_squares(self)->Scalar:
         """
-        Docstring for sum_of_squares
-        
-        :param self: Vetor instanciado como objeto
-        :return: Retorna o valor do produto escalar entre o vetor e ele mesmo
-        :rtype: Scalar
+        Calcula a soma dos quadrados dos elementos do vetor.
+
+        Returns:
+            Scalar: O valor do produto escalar do vetor por ele mesmo.
         """
         return self.dot_product(self)
     
     def magnitude(self) -> float:
         """
-        Calcula o comprimento/módulo/intensidade/magnitude de um vetor
-        
-        :param self: O vetor do qual o comprimento será calculado
-        :return: Retorna o comprimento do vetor
-        :rtype: float
+        Calcula o comprimento/módulo/intensidade/magnitude de um vetor.
+
+        Returns:
+            float: O comprimento (magnitude) do vetor.
         """
         return sqrt(self.sum_of_squares())
     
     def euclidian_distance(self,other:'Vector') -> float:
         """
-        Calcula a distância euclidiana entre dois vetores
-        
-        :param self: Vetor que chamou a função
-        :param other: Outro vetor
-        :type other: 'Vector'
-        :return: Distância euclidiana entre self e other
-        :rtype: float
+        Calcula a distância euclidiana entre dois vetores.
+
+        Args:
+            other (Vector): Outro vetor para calcular a distância.
+
+        Returns:
+            float: Distância euclidiana entre self e other.
         """
-
         diff_vector = self - other
-
         return diff_vector.magnitude()
