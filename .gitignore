@@ -1,6 +1,13 @@
-.ipynb_checkpoints
-.pytest_cache
-.venv
+# Compiled files (Bytecode) - This will clean up __pycache__
+__pycache__/
+*.pyc
 
-src/__pycache__
-tests/__pycache__
+# Virtual Environments (best practice)
+.venv/
+venv/
+env/
+
+# IDE and System Configurations (optional, but recommended)
+.vscode/
+.idea/
+.DS_Store
