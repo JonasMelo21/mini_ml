@@ -1,4 +1,4 @@
-from src.linear_model import least_square_fit, predict,gradient_descent_fit
+from src.linear_model import least_square_fit, predict,gradient_descent_fit,mean,variance,covariance, fit_statistical
 import math
 
 import pytest
@@ -33,3 +33,22 @@ def test_gradient_descent_convergence():
     # GD nunca é exato, então usamos margem de erro (abs_tol)
     assert math.isclose(alpha, 1.0, abs_tol=0.1)
     assert math.isclose(beta, 2.0, abs_tol=0.1)
+
+def test_fit_statistical():
+    # Dados de teste: y = 5x + 10 
+    x = [1,2,3,4]
+    y = [15,20,25,30]
+
+    alpha,beta = fit_statistical(x,y)
+
+    assert math.isclose(alpha,5.0,abs_tol=0.1)
+    assert math.isclose(beta,10.0,abs_tol=0.1)
+
+    # Dados do segundo teste: 1x + 0
+    x = [1,2,3]
+    y = [1,2,3]
+
+    new_alpha,new_beta = fit_statistical(x,y)
+
+    assert math.isclose(new_alpha,1.0,abs_tol=0.1)
+    assert math.isclose(new_beta,0,abs_tol=0.1)
