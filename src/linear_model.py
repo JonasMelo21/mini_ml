@@ -1,5 +1,5 @@
 from typing import List,Tuple 
-from src.statistics import correlation, covariance, std_deviation, mean
+from src.statistics import correlation, covariance, std_deviation, mean, variance
 
 def least_square_fit(x:List[float],y:List[float]) -> Tuple[float,float]:
     """
@@ -99,3 +99,17 @@ def gradient_descent_fit(
             print(f"Error in the {epoch // 100}_ith iteraction: {error}")
 
     return curr_alpha, curr_beta
+
+def fit_statistical(x:List[float],y:List[float]) -> Tuple[float,float]:
+    covariance_x_y = covariance(x,y)
+    variance_x = variance(x) 
+    mean_y = mean(y) 
+    mean_x = mean(x) 
+
+    # 1. Calculando o coeficiente beta com o método estatístico
+    alpha = covariance_x_y / variance_x
+
+    # 2. calculando alpha com o metodo estatístico
+    beta = mean_y - alpha * mean_x 
+
+    return [alpha,beta]
