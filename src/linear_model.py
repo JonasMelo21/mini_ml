@@ -101,6 +101,7 @@ def gradient_descent_fit(
     return curr_alpha, curr_beta
 
 def fit_statistical(x:List[float],y:List[float]) -> Tuple[float,float]:
+    # Calculando os coeficientes de y = alpha * x + beta
     covariance_x_y = covariance(x,y)
     variance_x = variance(x) 
     mean_y = mean(y) 
