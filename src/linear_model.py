@@ -1,40 +1,33 @@
 from typing import List,Tuple 
 from src.statistics import correlation, covariance, std_deviation, mean, variance
 
-def least_square_fit(x:List[float],y:List[float]) -> Tuple[float,float]:
+def least_square_fit(x: List[float], y: List[float]) -> Tuple[float, float]:
     """
-    Compute Linear Regression coefficients (alpha & Beta) 
-    through least square fit
-
+    Computes Linear Regression coefficients (alpha & beta) using least squares fit.
     Args:
-        x(List[float]) features
+        x (List[float]): Feature values.
+        y (List[float]): Target values.
     Returns:
-        y(List[float]) target variable
+        Tuple[float, float]: (alpha, beta) coefficients.
     """
-
-    # 1_st Step: Compute Least Square Beta
+    # 1st Step: Compute Least Squares Beta
     #   $$\beta = \text{correlation}(x, y) \times \frac{\sigma_y}{\sigma_x}$$
-    coeff_b = correlation(x,y) * (std_deviation(y)/std_deviation(x)) 
-
-    # 2_nd Step: Compute Least Square Alpha
+    coeff_b = correlation(x, y) * (std_deviation(y) / std_deviation(x))
+    # 2nd Step: Compute Least Squares Alpha
     #   $$\alpha = \bar{y} - \beta \bar{x}$$
     coeff_a = mean(y) - (coeff_b * mean(x))
+    return (coeff_a, coeff_b)
 
-    return (coeff_a,coeff_b)
-
-def predict(alpha:float,beta:float,x_i:float)->float:
+def predict(alpha: float, beta: float, x_i: float) -> float:
     """
-    Predicts the value of target variable(y) 
-    Based on the values of alpha,beta and i_th value of feature (x_i)
+    Predicts the target variable (y) using alpha, beta, and the i-th feature value.
     y = alpha + beta * x
-
     Args:
-        alpha(float): least squares alpha coefficient
-        beta(float): least squares beta coefficient
-        x_i(float): i_th value of the feature x
-    
+        alpha (float): Intercept coefficient.
+        beta (float): Slope coefficient.
+        x_i (float): Feature value.
     Returns:
-        float: target variable prediction
+        float: Predicted value.
     """
     return alpha + beta * x_i
 
