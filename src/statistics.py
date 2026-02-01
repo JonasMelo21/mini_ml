@@ -4,48 +4,40 @@ from math import sqrt
 def mean(data: List[float]) -> float:
     """
     Calculates the mean of a list of values.
-
     Args:
         data (List[float]): List of values.
-
     Returns:
         float: The mean of the values.
-
     Raises:
         ValueError: If the list is empty.
     """
     if len(data) == 0:
-        raise ValueError(f"Empty list")
+        raise ValueError("Empty list")
     else:
-        return sum(data) / len(data) 
+        return sum(data) / len(data)
 
 def median(data: List) -> float:
     """
     Calculates the median of a list of values.
-
     Args:
         data (List): List of values.
-
     Returns:
         float: The median value.
-
     Raises:
         ValueError: If the list is empty.
     """
     if not data:
-        raise ValueError(f"Empty List")
-
+        raise ValueError("Empty list")
     data_sorted = sorted(data)
-    medium_element = len(data_sorted) // 2
+    middle = len(data_sorted) // 2
     if len(data_sorted) % 2 == 0:
-        return (data_sorted[medium_element - 1] + data_sorted[medium_element]) / 2
+        return (data_sorted[middle - 1] + data_sorted[middle]) / 2
     else:
-        return data_sorted[medium_element]
+        return data_sorted[middle]
 
-def variance(data:List) -> float:
+def variance(data: List) -> float:
     """
     Calculates the sample variance.
-
     Args:
         data (List): Sample data.
 

@@ -13,39 +13,33 @@ class Vector:
     def __add__(self, other: 'Vector') -> 'Vector':
         """
         Adds two vectors.
-
         Args:
             other (Vector): Another vector to add.
-
         Returns:
             Vector: A new vector, result of the sum.
-
         Raises:
             ValueError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
-            raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
+            raise ValueError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
         else:
-            result = [x + y for x,y in zip(self.components,other.components)]
+            result = [x + y for x, y in zip(self.components, other.components)]
             return Vector(result)
     
-    def __sub__(self,other:'Vector') -> 'Vector':
+    def __sub__(self, other: 'Vector') -> 'Vector':
         """
         Subtracts one vector from another.
-
         Args:
             other (Vector): The vector to subtract.
-
         Returns:
             Vector: A new vector, result of the subtraction.
-
         Raises:
             ValueError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
-            raise ValueError(f"Vetores devem ter o mesmo tamanho. {len(self.components)} != {len(other.components)}")
+            raise ValueError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
         else:
-            result = [x - y for x,y in zip(self.components,other.components)]
+            result = [x - y for x, y in zip(self.components, other.components)]
             return Vector(result)
     
     def __mul__(self,scalar:Scalar)->'Vector':
