@@ -3,22 +3,17 @@
 This module implements common activation functions used in neural networks.
 
 ## Theory & Math
-Activation functions introduce non-linearity into neural networks. Common examples:
+Activation functions introduce non-linearity into neural networks. This module currently implements:
 - **Sigmoid**: $\sigma(x) = \frac{1}{1 + e^{-x}}$
-- **ReLU**: $f(x) = \max(0, x)$
-- **Tanh**: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$
 
 ## Usage
 ```python
-from src.activation import sigmoid, relu, tanh
+from src.activation import sigmoid
 
 print(sigmoid(0.5))
-print(relu([-1, 0, 2]))
 ```
 
 ## Functions
-- `sigmoid(x)`
-- `relu(x)`
-- `tanh(x)`
+- `sigmoid(z)`: Computes the sigmoid function, returns value between 0 and 1
 
 See the source code for more details.

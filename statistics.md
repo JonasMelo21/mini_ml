@@ -15,8 +15,8 @@ print(variance(X))
 ```
 
 ## Functions
-- `mean(X)`
-- `variance(X)`
-- `std(X)`
+- `mean(data)`
+- `variance(data)`
+- `std_deviation(data)`
 
 See the source code for more details.

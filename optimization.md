@@ -8,19 +8,17 @@ Optimization finds the best parameters for a model by minimizing a loss function
 
 ## Usage
 ```python
-from src.optimization import gradient_descent
+from src.optimization import gradient_step, sum_of_squares_gradient
+from src.linear_algebra import Vector
 
-def loss(w):
-    return (w - 2) ** 2
-
-def grad(w):
-    return 2 * (w - 2)
-
-w_opt = gradient_descent(loss, grad, w_init=0.0)
-print(w_opt)
+v = Vector([3.0, 4.0])
+gradient = sum_of_squares_gradient(v)
+new_v = gradient_step(v, gradient, step_size=0.01)
+print(new_v)
 ```
 
 ## Functions
-- `gradient_descent(loss_fn, grad_fn, w_init, lr=0.01, n_iter=100)`
+- `gradient_step(v, gradient, step_size)`: Moves vector v in the opposite direction of the gradient
+- `sum_of_squares_gradient(v)`: Calculates gradient of f(v) = sum(v_i ^ 2)
 
 See the source code for more details.

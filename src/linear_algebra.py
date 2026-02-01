@@ -18,10 +18,10 @@ class Vector:
         Returns:
             Vector: A new vector, result of the sum.
         Raises:
-            ValueError: If the vectors are not the same length.
+            ArithmeticError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
-            raise ValueError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
+            raise ArithmeticError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
         else:
             result = [x + y for x, y in zip(self.components, other.components)]
             return Vector(result)
@@ -34,10 +34,10 @@ class Vector:
         Returns:
             Vector: A new vector, result of the subtraction.
         Raises:
-            ValueError: If the vectors are not the same length.
+            ArithmeticError: If the vectors are not the same length.
         """
         if len(self.components) != len(other.components):
-            raise ValueError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
+            raise ArithmeticError(f"Vectors must have the same length. {len(self.components)} != {len(other.components)}")
         else:
             result = [x - y for x, y in zip(self.components, other.components)]
             return Vector(result)

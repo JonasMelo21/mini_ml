@@ -10,17 +10,20 @@ $$
 
 ## Usage
 ```python
-from src.linear_model import LinearRegression
+from src.linear_model import least_square_fit, predict, gradient_descent_fit
 
-X = [[1, 2], [2, 3], [3, 4]]
-y = [3, 5, 7]
-model = LinearRegression()
-model.fit(X, y)
-pred = model.predict([[4, 5]])
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 5, 4, 5]
+alpha, beta = least_square_fit(x, y)
+pred = predict(alpha, beta, 6)
 print(pred)
 ```
 
-## Classes
-- `LinearRegression()`
+## Functions
+- `least_square_fit(x, y)`: Computes linear regression coefficients using least squares
+- `predict(alpha, beta, x_i)`: Predicts target value using alpha, beta, and feature value
+- `compute_gradients(x, y, alpha, beta)`: Computes gradients of MSE cost function
+- `gradient_descent_fit(x, y, epochs=1000, learning_rate=0.01)`: Finds alpha and beta using gradient descent
+- `fit_statistical(x, y)`: Computes coefficients using statistical method
 
 See the source code for more details.
