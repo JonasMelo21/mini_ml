@@ -57,7 +57,8 @@ print(pred)
 2. Add or improve features. **Write tests** for your code in the `tests/` folder, following the existing style.
 3. Run all tests with:
    ```bash
-   pytest
+   uv sync
+   uv run -m pytest
    ```
    Ensure all tests pass. Add a screenshot of your terminal showing all tests passing to your PR.
 4. Use [semantic commit messages](https://www.conventionalcommits.org/en/v1.0.0/).
