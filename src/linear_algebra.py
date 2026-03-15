@@ -1,5 +1,8 @@
 from typing import List,Union 
 from math import sqrt
+from src.statistics import mean 
+from collections import Counter 
+
 Scalar = Union[int,float]
 
 
@@ -104,3 +107,41 @@ class Vector:
         """
         diff_vector = self - other
         return diff_vector.magnitude()
+
+
+def vector_mean(vectors: List[Vector]) -> Vector:
+    """
+    Calculate the centroid of a list of vectors.
+    Ex: [Vector([0,0]),Vector([4,4])] -> Vector([2,2])
+    """
+    # Validate if the list of Vectors is not empty
+    if not vectors:
+        raise ValueError("Empty Vector List")
+    
+    # Count how many dimensions each vector has
+    dimension = [len(vector.components) for vector in vectors]
+    dimension_set = set(dimension)
+
+    if len(dimension_set) != 1:
+        raise ValueError("Vectors are not the same dimension")
+    
+    # For each dimension i:
+    # Sum the i component of ALL vectors and divide by the number of vectors
+    matrix = [v.components for v in vectors]
+    num_vectors = len(vectors)
+    mean_components = [sum(coluna) / num_vectors for coluna in zip(*matrix)]
+    return Vector(mean_components)
+
+
+def euclidian_distance(v1: Vector, v2: Vector) -> float:
+    """
+    Calculates the Euclidean distance between two vectors.
+    
+    Args:
+        v1 (Vector): First vector
+        v2 (Vector): Second vector
+    
+    Returns:
+        float: The Euclidean distance between v1 and v2
+    """
+    return v1.euclidian_distance(v2)

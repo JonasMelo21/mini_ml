@@ -3,7 +3,7 @@
 A minimalistic, educational machine learning library implemented from scratch in Python. This project is designed for learning and experimentation, providing clear, well-documented code for core ML algorithms and utilities.
 
 ## Features
-- Core ML algorithms: KNN, Linear Regression, Logistic Regression, and more
+- Core ML algorithms: KNN, K-Means Clustering, Linear Regression, Logistic Regression, and more
 - Utility modules: Activation functions, optimization, preprocessing, statistics, and linear algebra
 - Simple, readable code for educational purposes
 - Comprehensive tests for each module
@@ -26,6 +26,7 @@ pip install -r requirements.txt
 ## Usage
 Each module in `src/` has its own documentation and usage guide:
 - [Activation Functions](activation.md)
+- [Clustering](clustering.md)
 - [KNN](knn.md)
 - [Linear Algebra](linear_algebra.md)
 - [Linear Model](linear_model.md)

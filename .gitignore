@@ -1,15 +1,25 @@
-# Compiled files (Bytecode) - This will clean up __pycache__
-**/__pycache__/*
+# Compiled files (Bytecode)
+__pycache__/
 *.pyc
-src/__pycache__/*
-tests/__pycache__/*
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
 
-# Virtual Environments (best practice)
+# Virtual Environments
 .venv/
 venv/
 env/
 
-# IDE and System Configurations (optional, but recommended)
+# IDE and System Configurations
 .vscode/
 .idea/
 .DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
